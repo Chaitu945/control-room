@@ -2,6 +2,14 @@ import { describe, expect, it } from "vitest";
 
 import { parseWalletList } from "@/lib/wallets";
 
+/**
+ * Fixtures are deliberately synthetic, and that is a hard rule for this repo:
+ * a test wallet address must never be a real one. These files are public, and a
+ * fixture copied from a real list publishes that wallet's association with this
+ * project permanently, in the git history, forever.
+ *
+ * `B` contains letters so the case-insensitivity test actually exercises case.
+ */
 const A = "0x1111111111111111111111111111111111111111";
 const B = "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd";
 
@@ -19,10 +27,12 @@ describe("parseWalletList", () => {
   });
 
   it("lowercases so the same wallet in two cases is one entry", () => {
-    const upper = A.toUpperCase().replace("0X", "0x");
-    const result = parseWalletList(`${A}\n${upper}`);
-    expect(result.valid).toEqual([A]);
-    expect(result.duplicates).toEqual([A]);
+    const upper = `0x${B.slice(2).toUpperCase()}`;
+    expect(upper).not.toBe(B); // guard: the fixture must actually differ in case
+
+    const result = parseWalletList(`${B}\n${upper}`);
+    expect(result.valid).toEqual([B]);
+    expect(result.duplicates).toEqual([B]);
   });
 
   it("extracts an address embedded in a block explorer URL", () => {
@@ -50,7 +60,13 @@ describe("parseWalletList", () => {
   });
 
   it("handles empty, nullish and whitespace-only input", () => {
-    for (const input of ["", "   ", "\n\n", undefined as unknown as string, null as unknown as string]) {
+    for (const input of [
+      "",
+      "   ",
+      "\n\n",
+      undefined as unknown as string,
+      null as unknown as string,
+    ]) {
       const result = parseWalletList(input);
       expect(result.valid).toEqual([]);
       expect(result.rejected).toEqual([]);

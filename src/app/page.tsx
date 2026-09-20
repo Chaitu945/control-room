@@ -48,14 +48,13 @@ export default function Home() {
 
         <div className="grid gap-5 md:grid-cols-2">
           <Planned
-            title="Wallet Tracker"
-            subtitle="What are my wallets doing right now?"
+            title="Wallet Overview"
+            subtitle="What does a given wallet hold?"
             items={[
-              "Live buy/sell alerts as tracked wallets trade",
-              "Unrealised PnL per token from our own trade history",
-              "Fed by wallet-tracker-bot writing to a hosted Postgres, so this view works when the bot is not on my laptop",
+              "Paste any address to see its native balance and holdings",
+              "Reuses the same key-free RPC path the Finder already uses",
             ]}
-            blockedOn="Blocked on: valid Moralis + Alchemy keys (both currently reject at 401)."
+            blockedOn="Not built yet, and the reason is worth stating: listing everything a wallet owns needs an asset indexer, which needs an API key. The Finder dodges that by asking one contract about addresses you already know."
           />
 
           <Planned
@@ -66,7 +65,7 @@ export default function Home() {
               "Gas-wait status and per-wallet mint results",
               "Transaction confirmation with explorer links",
             ]}
-            blockedOn="Blocked on: wiring my-mint-bot's runner to a shared data source."
+            blockedOn="Not built yet: needs my local mint runner wired to a shared data source."
           />
         </div>
       </div>

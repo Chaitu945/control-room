@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Holders",
+  title: "Control Room",
   description:
     "One place for NFT minting, wallet tracking and holder lookups across EVM chains.",
 };

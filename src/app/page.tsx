@@ -33,7 +33,7 @@ export default function Home() {
       <header className="mb-8">
         <div className="flex items-center gap-2.5">
           <span className="h-2 w-2 rounded-full bg-accent" />
-          <h1 className="text-lg font-semibold tracking-tight">Holders</h1>
+          <h1 className="text-lg font-semibold tracking-tight">Control Room</h1>
         </div>
         <p className="mt-2 max-w-2xl text-sm text-muted">
           One place for NFT minting, wallet tracking and holder lookups. Panels ship

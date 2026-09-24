@@ -1,4 +1,4 @@
-# Scope
+# Holders
 
 One place for NFT minting, wallet tracking and holder lookups across EVM chains.
 
